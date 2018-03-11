@@ -1,5 +1,7 @@
 # sync-pom-version-to-package
 
+[![Build Status](https://travis-ci.org/MashupMill/sync-pom-version-to-package.svg?branch=master)](https://travis-ci.org/MashupMill/sync-pom-version-to-package)
+
 Synchronizes the pom version to the package.json. Useful for applications that rely on maven pom's for building the application.
 
 ## Usage

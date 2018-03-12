@@ -1,5 +1,5 @@
 {
-  "name": "sync-mvn-version-to-package",
+  "name": "sync-pom-version-to-package",
   "version": "1.0.0",
   "description": "Sync's the maven project version to the package.json",
   "main": "index.js",

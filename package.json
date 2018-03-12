@@ -41,7 +41,6 @@
     "nyc": "^11.4.1"
   },
   "dependencies": {
-    "parse-semver": "^1.1.1",
     "semver-regex": "^1.0.0",
     "xml-parser": "^1.2.1"
   }

@@ -6,7 +6,15 @@
   "author": "Branden Cash",
   "license": "MIT",
   "homepage": "https://github.com/MashupMill/sync-pom-version-to-package",
-  "keywords": ["maven", "pom", "pom.xml", "mvn", "version", "package.json", "sync"],
+  "keywords": [
+    "maven",
+    "pom",
+    "pom.xml",
+    "mvn",
+    "version",
+    "package.json",
+    "sync"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/MashupMill/sync-pom-version-to-package.git"

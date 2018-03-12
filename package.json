@@ -27,6 +27,7 @@
   },
   "scripts": {
     "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "test": "mocha",
     "test:coverage": "nyc --reporter=html --reporter=text npm test",
     "test:watch": "mocha --watch",

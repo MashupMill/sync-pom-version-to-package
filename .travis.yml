@@ -8,6 +8,8 @@ install:
 script:
   - yarn lint
   - yarn test:coverage
+after_success:
+  - yarn report:coveralls
 cache: yarn
 deploy:
   provider: npm

@@ -3,17 +3,26 @@ const semverRegex = require('semver-regex');
 module.exports = (version) => {
     // already matches semver...lets use it
     if (semverRegex().test(version)) {
-        return version;
+        // apparently semver-regex allows the period at the beginning and end (i.e. it sees ".1.0.0-SNAPSHOT." as valid)
+        // ...so adding cleanVersion in here as well
+        return cleanVersion(version);
     }
 
     const newVersion = parseNewVersion(version);
 
     if (newVersion) {
-        return newVersion;
+        return cleanVersion(newVersion);
     }
 
     // no match ^ found, we'll juse use the version as the pre-release tag and use 0.0.0 as the version
-    return `0.0.0-${version.replace(/[^0-9A-Za-z-.]/, '')}`;
+    return cleanVersion(`0.0.0-${version}`);
+};
+
+const cleanVersion = (version) => {
+    return version
+        .replace(/^[^0-9]*/, '')
+        .replace(/[^0-9A-Za-z]*$/, '')
+        .replace(/[^0-9A-Za-z-.+]/, '');
 };
 
 const parseNewVersion = (version) => {

@@ -23,4 +23,7 @@ describe('convertToSemver', () => {
     it('should fill out version with build meta data', () => {
         expect(convertToSemver('1+20180301121212')).to.equal('1.0.0+20180301121212');
     });
+    it('should strip out invalid characters at the beginning and end', () => {
+        expect(convertToSemver('..1.0.0-SNAPSHOT...')).to.equal('1.0.0-SNAPSHOT');
+    })
 });

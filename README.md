@@ -1,10 +1,13 @@
 # sync-pom-version-to-package
 
-[![npm version](https://badge.fury.io/js/sync-pom-version-to-package.svg)](https://badge.fury.io/js/sync-pom-version-to-package)
-[![Build Status](https://travis-ci.org/MashupMill/sync-pom-version-to-package.svg?branch=master)](https://travis-ci.org/MashupMill/sync-pom-version-to-package)
-[![Coverage Status](https://coveralls.io/repos/github/MashupMill/sync-pom-version-to-package/badge.svg)](https://coveralls.io/github/MashupMill/sync-pom-version-to-package)
-[![Dependency Status](https://david-dm.org/MashupMill/sync-pom-version-to-package.svg)](https://david-dm.org/MashupMill/sync-pom-version-to-package)
-[![Downloads](http://img.shields.io/npm/dm/sync-pom-version-to-package.svg)](https://npmjs.org/package/sync-pom-version-to-package)
+
+[![npm](https://img.shields.io/npm/v/sync-pom-version-to-package.svg?style=for-the-badge)](https://www.npmjs.com/package/sync-pom-version-to-package)
+[![npm](https://img.shields.io/npm/dm/sync-pom-version-to-package.svg?style=for-the-badge)](https://npmjs.org/package/sync-pom-version-to-package)
+[![GitHub issues](https://img.shields.io/github/issues-raw/MashupMill/sync-pom-version-to-package.svg?style=for-the-badge)](https://github.com/MashupMill/sync-pom-version-to-package/issues)
+
+[![Travis](https://img.shields.io/travis/MashupMill/sync-pom-version-to-package.svg?style=for-the-badge)](https://travis-ci.org/MashupMill/sync-pom-version-to-package)
+[![Coveralls github](https://img.shields.io/coveralls/github/MashupMill/sync-pom-version-to-package.svg?style=for-the-badge)](https://coveralls.io/github/MashupMill/sync-pom-version-to-package)
+[![David](https://img.shields.io/david/MashupMill/sync-pom-version-to-package.svg?style=for-the-badge)](https://david-dm.org/MashupMill/sync-pom-version-to-package)
 
 Synchronizes the pom version to the package.json. Useful for applications that rely on maven pom's for building the application.
 
@@ -62,3 +65,13 @@ Synchronizes the pom version to the package.json. Useful for applications that r
     </executions>
 </plugin>
 ```
+
+### Options
+| Name | Description |
+| --- | --- |
+| `--prerelease-suffix` | Suffix string to apply to the version if it is a prerelease version. If the pom version is a release version, this value is ignored. This can be useful if you want your maven build to append a build number or timestamp to the version, so each build would push up a unique version for `SNAPSHOT` versions. So if I added `--prerelease-suffix '.0'` and the pom version is something like `1.0.0-SNAPSHOT`, the resulting version would be `1.0.0-SNAPSHOT.0`. But if the pom version was `1.0.0`, the resulting version would still be `1.0.0`.  |
+
+> Adding options in the `frontend-maven-plugin` can be done by setting the `arguments` like this: 
+> `<arguments>sync-pom-version -- --prerelease-version=.0</arguments>`
+> or
+> `<arguments>sync-pom-version -- --prerelease-version=.${BUILD_NUMBER}</arguments>`

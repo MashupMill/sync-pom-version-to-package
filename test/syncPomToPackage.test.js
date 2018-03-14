@@ -11,16 +11,16 @@ const POM_FILE = path.join(__dirname, 'pom.xml');
 
 describe('syncPomToPackage', () => {
     let cwd = process.cwd();
-    before(() => {
+    beforeEach(() => {
         process.chdir(__dirname);
         fs.writeFileSync(PACKAGE_FILE, PACKAGE);
         fs.writeFileSync(POM_FILE, POM);
     });
-    after(() => {
+    afterEach(() => {
         process.chdir(cwd);
         fs.unlinkSync(PACKAGE_FILE);
         fs.unlinkSync(POM_FILE);
-    })
+    });
     it('should sync pom.xml version to package.json version', () => {
         syncPomToPackage(POM_FILE, PACKAGE_FILE);
         expect(require(PACKAGE_FILE).version).to.equal('0.0.1-SNAPSHOT');
@@ -39,4 +39,17 @@ describe('syncPomToPackage', () => {
     it('should throw an error if package.json doesnt exist', () => {
         expect(syncPomToPackage.bind(this, POM_FILE, 'non-existing-package.json')).to.throw();
     });
-})
+    it('should append the prerelease suffix if provided and the version already contains a prerelease label', () => {
+        syncPomToPackage(POM_FILE, PACKAGE_FILE, { prereleaseSuffix: '.0' });
+        expect(require(PACKAGE_FILE).version).to.equal('0.0.1-SNAPSHOT.0');
+    });
+    it('should not append the prerelease suffix if the version is a release version', () => {
+        fs.writeFileSync(POM_FILE, POM.replace('0.0.1-SNAPSHOT', '1.0.0'));
+        syncPomToPackage(POM_FILE, PACKAGE_FILE, { prereleaseSuffix: '.0' });
+        expect(require(PACKAGE_FILE).version).to.equal('1.0.0');
+    });
+    it('should strip invalid characters from the end of the version', () => {
+        syncPomToPackage(POM_FILE, PACKAGE_FILE, { prereleaseSuffix: '...' });
+        expect(require(PACKAGE_FILE).version).to.equal('0.0.1-SNAPSHOT');
+    });
+});

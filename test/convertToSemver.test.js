@@ -25,5 +25,8 @@ describe('convertToSemver', () => {
     });
     it('should strip out invalid characters at the beginning and end', () => {
         expect(convertToSemver('..1.0.0-SNAPSHOT...')).to.equal('1.0.0-SNAPSHOT');
-    })
+    });
+    it('should convert PR-1-SNAPSHOT to 0.0.0-PR-1-SNAPSHOT', () => {
+        expect(convertToSemver('PR-1-SNAPSHOT')).to.equal('0.0.0-PR-1-SNAPSHOT');
+    });
 });

@@ -27,7 +27,7 @@ const cleanVersion = (version) => {
 
 const parseNewVersion = (version) => {
     // match against a pattern where we could extract a semver and label (i.e. 1-SNAPSHOT, 1.0-SNAPSHOT, etc)
-    const match = version.match(/(\d+)(\.\d+)?(\.\d+)?(-.+)?(\+.+)?/);
+    const match = version.match(/^(\d+)(\.\d+)?(\.\d+)?(-.+)?(\+.+)?/);
     if (!match) {
         return null;
     }

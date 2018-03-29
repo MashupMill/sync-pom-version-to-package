@@ -1,6 +1,6 @@
 {
   "name": "sync-pom-version-to-package",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Sync's the maven project version to the package.json",
   "main": "index.js",
   "author": "Branden Cash",

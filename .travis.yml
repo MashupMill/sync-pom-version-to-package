@@ -1,21 +1,21 @@
 language: node_js
 node_js:
-  - '6'
+- '6'
 before_install:
-  - npm i -g npm@latest
+- npm i -g npm@latest
 install:
-  - yarn install
+- yarn install
 script:
-  - yarn lint
-  - yarn test:coverage
+- yarn lint
+- yarn test:coverage
 after_success:
-  - yarn report:coveralls
+- yarn report:coveralls
 cache: yarn
 deploy:
   provider: npm
   email: ammmze@gmail.com
   api_key:
-    secure: k/R7pRamhc6nzHrXhBwptrVJmZfEYrby/80KrMfwIkpwyg6wnKNFIHndSlQraDug05fzF/CN9tkxNdw9ROfZtzJnYoHfg5ZoDeESymNj0aXDRyD07sCgBalNO0o5OjeDM8o0/52Og8TFIJAPzTsXlyJz4PVm8raa/26rlpYPG1shaq6XupwzAv5i+6LWGwmDrbU8uofSCJYYQEP4pJSNgJLR7DT0OFc//DbP7JIiEt15ECqPI7Ky/winLZ2WKPc/seIdhb4uJD0z4JCstlgUifh5TNi1v7rsmeTqv5uiB64yL/8btEb3TRii9RP3q5sno/WmtoMzbbcUuhIxC4xJ67URAzMt8U5NtAhhB7qfH41u0wwDwBdSVcufXSgj6MJQc00aYbINUYcorRhUoc0wrAQ7xrkCaivMRTZmDXjgbAsQSTRa0logDrKZHn9sIgqMKlhw6HBIUEUFRarwJo17VT1gbg52mhePmGmkNoSyrGSwh5V+JbMoe8MvpWe95MeXy5fe6c+ekEPONVRHeurHgv9r96xS5+pLJkCc58vZLlmij9JMerr7YNuqJ5wpwjr44ss9mqupc9ucouEA9YrrNr0NBXXYdhXtuf1shRhNDCuWy+fpzYU+r5ft5YgHkBTt+zIn/31aA+wAmgV/AmDzCVrmcipWZjl6Qo0CrV3PZ2Q=
+    secure: tiEc/ZUFJf9tBb/bQUUIXJAjwI5mFM3KViTFqS7hByK51C1ydIQE7gdYBdgm7pVw0I8ajmwozw94CGnYjuJivdTPtaKhnN9NHjZw25OygXds/UzsUshFzaN90qL4+8M5DKW0JiZNaVtKQT1cSU+6aNXFa7ojY0pKajdtNrweL9SQaumY+7gUcYdc6Lz2K2/LylqAPGQ63mXvhKB+pVQXTQE0/P1JvQa6Z8Q12qJOBgyda/EmIUC3baAG2ECBJDc6Aax6YOwFo74cGtXk/9+fv9lIIax6u0V9gYXa5D6j2GzW5sVzrDe8PkQMIKHcHblrJgdsyiQ2Cc/+fghF+Qnv+wHpTyGSkCPqmc4G/pinmqSznsxpr7fNAOINSlr0NmkFHEXPtDpXs9+GwuDeIY9N67YeOZMjIQ2ASq22pTK9uILv4xgsz/3s1xxrZU8c13ZVQRCRJlvuKqvSuptmiZTyAEMDcdHJoT8mwH9PutrWlB9hCvYG6jY9ma78tZElX8NWIyKOTIYGtbTNsuIiptncRpRxBLyDyljW8UakuHIWO1dS2w8eLsa02h+ZxgnELHptBo68CcwLCNhytrhCOBcHhPk+YJa5sRQ6OqpU1pBNWFugg534h5HsMXBjWgx+AmlnjiE1jF5hc1lSfay6PLbjbhF4G1cmErB0YWphKftAFuc=
   on:
     tags: true
     repo: MashupMill/sync-pom-version-to-package

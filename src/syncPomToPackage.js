@@ -17,7 +17,7 @@ module.exports = (pomFile = path.resolve('./pom.xml'), packageFile = path.resolv
         spawn(
             'npm',
             ['version', packageJson.version, '--force', '--no-git-tag-version', '--allow-same-version'],
-            { cwd: path.dirname(packageFile), stdio: 'inherit' }
+            { cwd: path.dirname(packageFile), stdio: 'inherit', shell : true }
         ).on('exit', code => {
             code ? reject(code) : resolve();
         });

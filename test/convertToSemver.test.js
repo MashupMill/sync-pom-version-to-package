@@ -1,4 +1,3 @@
-/* global describe, it */
 const convertToSemver = require('../src/convertToSemver');
 const {expect} = require('chai');
 

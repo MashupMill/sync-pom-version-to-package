@@ -25,7 +25,7 @@ jobs:
               with:
                 github-token: ${{ secrets.GITHUB_TOKEN }}
             - name: Publish
-              run: yarn publish
+              run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc && yarn publish
               if: startsWith(github.ref, 'refs/tags/v')
               env:
                 NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

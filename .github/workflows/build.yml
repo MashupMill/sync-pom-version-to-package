@@ -1,0 +1,30 @@
+name: Build and Publish
+on:
+    pull_request:
+    push:
+        tags:
+            - v*
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                node-version: '10.x'
+            - name: Install Dependencies
+              run: npm install -g yarn && yarn install
+            - name: Lint
+              run: yarn lint
+            - name: Unit Test
+              run: yarn test:coverage
+            - name: Coveralls
+              uses: coverallsapp/github-action@master
+              with:
+                github-token: ${{ secrets.GITHUB_TOKEN }}
+            - name: Publish
+              run: yarn publish
+              if: startsWith(github.ref, 'refs/tags/v')
+              env:
+                NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

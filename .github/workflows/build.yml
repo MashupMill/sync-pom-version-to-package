@@ -13,6 +13,7 @@ jobs:
             - uses: actions/setup-node@v1
               with:
                 node-version: '10.x'
+                always-auth: true
             - name: Install Dependencies
               run: npm install -g yarn && yarn install
             - name: Lint

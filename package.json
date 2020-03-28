@@ -1,6 +1,6 @@
 {
   "name": "sync-pom-version-to-package",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Sync's the maven project version to the package.json",
   "main": "index.js",
   "author": "Branden Cash",
@@ -29,22 +29,21 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "test": "mocha",
-    "test:coverage": "nyc --reporter=html --reporter=text npm test",
-    "test:watch": "mocha --watch",
-    "report:coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "test:coverage": "nyc --reporter=html --reporter=text --reporter=lcov npm test",
+    "test:watch": "mocha --watch"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "coveralls": "^3.0.0",
-    "eslint": "^4.18.2",
-    "mocha": "^5.0.4",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.11",
+    "eslint": "^6.8.0",
+    "mocha": "^7.1.1",
     "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^11.4.1"
+    "nyc": "^15.0.0"
   },
   "dependencies": {
     "argparse": "^1.0.10",
     "optimist": "^0.6.1",
-    "semver-regex": "^1.0.0",
+    "semver-regex": "^3.1.1",
     "xml-parser": "^1.2.1"
   }
 }

@@ -8,7 +8,7 @@ module.exports = (version) => {
         return cleanVersion(version);
     }
 
-    const newVersion = parseNewVersion(version);
+    const newVersion = parseNewVersion(trimVersion(version));
 
     if (newVersion) {
         return cleanVersion(newVersion);
@@ -16,6 +16,12 @@ module.exports = (version) => {
 
     // no match ^ found, we'll juse use the version as the pre-release tag and use 0.0.0 as the version
     return cleanVersion(`0.0.0-${version}`);
+};
+
+const trimVersion = (version) => {
+    return version
+        .replace(/^[^0-9A-Za-z]*/, '')
+        .replace(/[^0-9A-Za-z]*$/, '');
 };
 
 const cleanVersion = (version) => {

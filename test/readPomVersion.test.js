@@ -1,4 +1,3 @@
-/* global describe, it */
 const readPomVersion = require('../src/readPomVersion');
 const fs = require('fs');
 const path = require('path');

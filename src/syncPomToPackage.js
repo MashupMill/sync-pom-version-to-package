@@ -3,10 +3,10 @@ const { spawn } = require('child_process');
 const convertToSemver = require('./convertToSemver');
 const readPomVersion = require('./readPomVersion');
 
-module.exports = (pomFile = path.resolve('./pom.xml'), packageFile = path.resolve('./package.json'), options = {}) => {
-    const pomVersion = readPomVersion(pomFile);
+module.exports = (pomFile = './pom.xml', packageFile = './package.json', options = {}) => {
+    const pomVersion = readPomVersion(path.resolve(pomFile));
     const version = convertToSemver(pomVersion);
-    const packageJson = require(packageFile);
+    const packageJson = require(path.resolve(packageFile));
     packageJson.version = version;
 
     if (typeof options.prereleaseSuffix !== 'undefined' && packageJson.version.indexOf('-') >= 0) {

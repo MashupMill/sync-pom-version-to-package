@@ -70,6 +70,8 @@ Synchronizes the pom version to the package.json. Useful for applications that r
 | Name | Description |
 | --- | --- |
 | `--prerelease-suffix` | Suffix string to apply to the version if it is a prerelease version. If the pom version is a release version, this value is ignored. This can be useful if you want your maven build to append a build number or timestamp to the version, so each build would push up a unique version for `SNAPSHOT` versions. So if I added `--prerelease-suffix '.0'` and the pom version is something like `1.0.0-SNAPSHOT`, the resulting version would be `1.0.0-SNAPSHOT.0`. But if the pom version was `1.0.0`, the resulting version would still be `1.0.0`.  |
+| `--pom-file` | Location of the `pom.xml` file. Defaults to use `./pom.xml` |
+| `--package-file` | Location of the `package.json` file. Defaults to use `./package.json` |
 
 > Adding options in the `frontend-maven-plugin` can be done by setting the `arguments` like this: 
 > `<arguments>sync-pom-version -- --prerelease-version=.0</arguments>`

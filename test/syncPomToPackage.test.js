@@ -60,4 +60,9 @@ describe('syncPomToPackage', () => {
             expect(require(PACKAGE_FILE).version).to.equal('0.0.1-SNAPSHOT');
         });
     });
+    it('should use yarn', () => {
+        return syncPomToPackage(POM_FILE, PACKAGE_FILE, { useYarn: true }).then(() => {
+            expect(require(PACKAGE_FILE).version).to.equal('0.0.1-SNAPSHOT');
+        });
+    });
 });

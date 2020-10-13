@@ -7,6 +7,7 @@ const parser = new (require('argparse').ArgumentParser)({
 parser.addArgument(['--prerelease-suffix'], { defaultValue: '', help: 'Suffix string to apply to the version if it is a prerelease version' });
 parser.addArgument(['--pom-file'], { help: 'Location of the pom.xml file. Defaults to use ./pom.xml' });
 parser.addArgument(['--package-file'], { help: 'Location of the package.json file. Defaults to use ./package.json' });
+parser.addArgument(['--use-yarn'], { action: 'storeTrue', help: 'Use Yarn instead of NPM to update the version' });
 const args = parser.parseArgs();
 
-syncPomToPackage(args.pom_file || undefined, args.package_file || undefined, { prereleaseSuffix: args.prerelease_suffix });
+syncPomToPackage(args.pom_file || undefined, args.package_file || undefined, { prereleaseSuffix: args.prerelease_suffix, useYarn: args.use_yarn });

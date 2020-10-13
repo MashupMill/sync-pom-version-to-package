@@ -15,8 +15,8 @@ module.exports = (pomFile = './pom.xml', packageFile = './package.json', options
 
     return new Promise((resolve, reject) => {
         spawn(
-            'npm',
-            ['version', packageJson.version, '--force', '--no-git-tag-version', '--allow-same-version'],
+            options.useYarn ? 'yarn' : 'npm',
+            [options.useYarn ? 'version --new-version' : 'version', packageJson.version, '--force', '--no-git-tag-version', '--allow-same-version'],
             { cwd: path.dirname(packageFile), stdio: 'inherit', shell : true }
         ).on('exit', code => {
             code ? reject(code) : resolve();
